@@ -6,7 +6,7 @@
 #    By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/07 20:57:42 by spoliart          #+#    #+#              #
-#    Updated: 2021/09/08 00:17:31 by spoliart         ###   ########.fr        #
+#    Updated: 2021/09/08 03:14:41 by spoliart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ I = ./includes/
 FDF = fdf
 
 SRCS =	fdf.c \
+		parsing.c \
 		error.c
 OBJS = $(SRCS:%.c=$O%.o)
 

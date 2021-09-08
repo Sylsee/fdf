@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 22:14:53 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/07 23:15:03 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/08 03:15:10 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_env
 	void	*win_ptr;
 }				t_env;
 
+void	parsing(char *filename, t_env *env);
 void	print_and_exit(char *s);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: spoliart <sylvio.poliart@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/13 19:04:24 by spoliart          #+#    #+#              #
-#    Updated: 2021/07/28 20:14:59 by spoliart         ###   ########.fr        #
+#    Updated: 2021/09/08 03:10:43 by spoliart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,7 @@ SRCS			=	char/ft_isalnum.c \
 					str/ft_strextract.c \
 					str/ft_str_end.c \
 					str/ft_charset.c \
+					str/ft_wdcounter.c \
 					nbr/ft_atoi.c \
 					nbr/ft_atof.c \
 					nbr/ft_itoa.c \
