@@ -6,7 +6,7 @@
 #    By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/07 20:57:42 by spoliart          #+#    #+#              #
-#    Updated: 2021/09/08 03:14:41 by spoliart         ###   ########.fr        #
+#    Updated: 2021/09/08 03:25:28 by spoliart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ fclean: clean
 
 re: fclean all
 
-push:
+push: fclean
 	@git add .
 	@git commit -m "fdf"
 	@git push

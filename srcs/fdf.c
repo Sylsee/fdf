@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/08 03:17:05 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/08 03:25:11 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 		j = 0;
 		while (j < env.width)
 		{
-			printf("%d  ", env.z_matrix[i][j]);
+			printf("%4d", env.z_matrix[i][j]);
 			j++;
 		}
 		printf("\n");
