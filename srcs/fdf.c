@@ -3,39 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/08 03:25:11 by spoliart         ###   ########.fr       */
+/*   Created: 2021/09/08 21:06:28 by spoliart          #+#    #+#             */
+/*   Updated: 2021/09/09 19:47:18 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(int argc, char **argv)
-{
-	t_env	env;
+#define MAX(X, Y) (X > Y) ? X : Y
 
-	if (argc != 2 || (argv[1] && !(ft_str_end(argv[1], ".fdf"))))
-		print_and_exit("Error: usage: ./fdf file.fdf");
-	parsing(argv[1], &env);
-	return (0);
+void	zoom(int x, int y, int x1, int y1, t_env *env)
+{
+	x *= env->zoom;
+	x1 *= env->zoom;
+	y *= env->zoom;
+	y1 *= env->zoom;
 }
 
-/*
-	int i;
-	int j;
-	printf("height: [%d]\nwidth: [%d]\n", env.height, env.width);
-	i = 0;
-	while (env.z_matrix[i])
+void	bresenham(int x, int y, int x1, int y1, t_env *env)
+{
+	int	max;
+	int	x_step;
+	int	y_step;
+
+	zoom(x, y, x1, y1, env);
+	x_step = x1 - x;
+	y_step = y1 - y;
+	max = MAX(ABS(x_step), ABS(y_step));
+	x_step /= max;
+	y_step /= max;
+	while (x - x1 > 0 || y - y1 > 0)
 	{
-		j = 0;
-		while (j < env.width)
-		{
-			printf("%4d", env.z_matrix[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
+		mlx_pixel_put(env->mlx_ptr, env->win_ptr, x, y, 0xBBFAFF);
+		x += x_step;
+		y += y_step;
 	}
-*/
+}
+
+void	fdf(t_env *env)
+{
+/*	int	x;
+	int	y;
+
+	x = -1;
+	while (++x < env->height)
+	{
+		y = -1;
+		while (++y < env->width)
+		{
+		//	if (x < env->height - 1)
+		//		bresenham(x, y, x + 1, y, env);
+		//	if (y < env->width - 1)
+		//		bresenham(x, y, x, y + 1, env);
+		}
+	}*/
+	int x = 49;
+	while (++x < 100)
+	{
+		int y = 49;
+		while (++y < 100)
+			mlx_pixel_put(env->mlx_ptr, env->win_ptr, x, y, 255);
+	}
+	//bresenham(50, 50, 100, 100, env);
+}
