@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 04:52:52 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 04:55:21 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,11 @@ int	hook(int key, t_env *env)
 		env->zoom += 1;
 	if (key == 5)
 		env->zoom -= 1;
-	mlx_clear_window(env->mlx_ptr, env->win_ptr);
-	fdf(env);
+	if (key == 4 || key == 5)
+	{
+		mlx_clear_window(env->mlx_ptr, env->win_ptr);
+		fdf(env);
+	}
 	return (0);
 }
 
