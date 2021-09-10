@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 22:14:53 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 04:29:22 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:29:11 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_env
 	int		z_shift;
 	int		zoom;
 	float	angle;
+	int		isometric;
 
 	void	*mlx_ptr;
 	void	*win_ptr;

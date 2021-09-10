@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:25:56 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:28:09 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,14 @@ int	key_hook(int key, t_env *env)
 		fdf_close(env);
 	if (key == 65361 || key == 65363 || key == 65364 || key == 65362)
 		move(key, env);
+	if (key == 32)
+		env->isometric = !(env->isometric);
 	return (0);
 }
 
 static void	setup(t_env *env)
 {
+	env->isometric = 1;
 	env->zoom = 20;
 	env->angle = 0.8;
 	env->x_shift = 190;
