@@ -6,7 +6,7 @@
 #    By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/07 20:57:42 by spoliart          #+#    #+#              #
-#    Updated: 2021/09/10 17:36:02 by spoliart         ###   ########.fr        #
+#    Updated: 2021/09/10 17:43:14 by spoliart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,9 @@ FDF = fdf
 
 SRCS =	main.c \
 		fdf.c \
-		hook.c \
 		parsing.c \
+		param.c \
+		hook.c \
 		error.c
 OBJS = $(SRCS:%.c=$O%.o)
 

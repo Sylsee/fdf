@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 22:14:53 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 17:37:43 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 17:42:40 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ void	fdf(t_env *env);
 
 void	parsing(char *filename, t_env *env);
 void	setup(t_env *env);
+
+void	isometric(float *x, float *y, float z, t_env *env);
+void	shift(t_dot *a, t_dot *b, t_env *env);
+void	zoom(t_dot *a, t_dot *b, t_env *env);
 
 int		key_hook(int key, t_env *env);
 int		mouse_hook(int button, int x, int y, t_env *env);

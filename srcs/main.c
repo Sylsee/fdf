@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 17:36:50 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 17:50:05 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	fdf_close(t_env *env)
 {
 	mlx_clear_window(env->mlx_ptr, env->win_ptr);
 	mlx_destroy_window(env->mlx_ptr, env->win_ptr);
+	mlx_destroy_display(env->mlx_ptr);
 	free_matrix(env);
 	exit(0);
 }
@@ -59,6 +60,5 @@ int	main(int argc, char **argv)
 	mlx_mouse_hook(env.win_ptr, &mouse_hook, &env);
 	mlx_hook(env.win_ptr, 33, 0, &fdf_close, &env);
 	mlx_loop(env.mlx_ptr);
-	free_matrix(&env);
 	return (0);
 }
