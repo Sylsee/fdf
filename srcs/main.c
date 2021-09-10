@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:31:20 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:34:19 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,13 @@ void	need_reset(int key, t_env *env)
 	if (key == 65362)
 		env->y_shift -= 10;
 	if (key == 32)
+	{
+		if (env->isometric)
+			env->x_shift -= 120;
+		else
+			env->x_shift += 120;
 		env->isometric = !(env->isometric);
+	}
 	mlx_clear_window(env->mlx_ptr, env->win_ptr);
 	fdf(env);
 }
