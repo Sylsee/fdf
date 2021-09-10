@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:30:43 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:31:20 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	mouse_hook(int button, int x, int y, t_env *env)
 	return (0);
 }
 
-void	move(int key, t_env *env)
+void	need_reset(int key, t_env *env)
 {
 	if (key == 65363)
 		env->x_shift += 10;
