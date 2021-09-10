@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 21:06:28 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:28:38 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 06:27:34 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	bresenham(t_dot a, t_dot b, t_env *env)
 	step(&x_step, &y_step, a, b);
 	while ((int)(a.x - b.x) || (int)(a.y - b.y))
 	{
-		mlx_pixel_put(env->mlx_ptr, env->win_ptr, a.x, a.y, color);//get_color(a, b));
+		mlx_pixel_put(env->mlx_ptr, env->win_ptr, a.x, a.y, color);
 		a.x += x_step;
 		a.y += y_step;
 	}
