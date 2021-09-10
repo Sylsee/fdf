@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:17:30 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:20:29 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	key_hook(int key, t_env *env)
 	printf("key: [%d]\n", key);
 	if (key == 65307)
 		fdf_close(env);
-/*	if (key == 65361)
-		left(env);
-	if (key == 65364)
-		down(env);
+	if (key == 65361)
+		env->x_shift += 20;
 	if (key == 65363)
-		right(env);
+		env->x_shift -= 20;
+	if (key == 65364)
+		env->y_shift += 20;
 	if (key == 65362)
-		up(env);*/
+		env->y_shift -= 20;
 	return (0);
 }
 
