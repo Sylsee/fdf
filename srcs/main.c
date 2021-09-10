@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:28:09 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:30:43 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	move(int key, t_env *env)
 		env->y_shift += 10;
 	if (key == 65362)
 		env->y_shift -= 10;
+	if (key == 32)
+		env->isometric = !(env->isometric);
 	mlx_clear_window(env->mlx_ptr, env->win_ptr);
 	fdf(env);
 }
@@ -57,10 +59,9 @@ int	key_hook(int key, t_env *env)
 	printf("key: [%d]\n", key);
 	if (key == 65307)
 		fdf_close(env);
-	if (key == 65361 || key == 65363 || key == 65364 || key == 65362)
-		move(key, env);
-	if (key == 32)
-		env->isometric = !(env->isometric);
+	if (key == 65361 || key == 65363 || key == 65364 || key == 65362 ||
+		key == 32)
+		need_reset(key, env);
 	return (0);
 }
 
