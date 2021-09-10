@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:46:47 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:49:36 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,15 @@ int	key_hook(int key, t_env *env)
 	if (key == 65361 || key == 65363 || key == 65364 || key == 65362 ||
 		key == 32)
 		need_reset(key, env);
+	if (key == 'd')
+		reset_default(env);
 	return (0);
+}
+
+static void	reset_default(t_env *env)
+{
+	setup(env);
+	fdf(env);
 }
 
 static void	setup(t_env *env)
