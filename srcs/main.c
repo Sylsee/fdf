@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:57:06 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 06:13:05 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,16 @@ int	key_hook(int key, t_env *env)
 	return (0);
 }
 
+void	free_matrix(t_env *env)
+{
+	int	i;
+
+	i = -1;
+	while (++i < env->height)
+		free(env->matrix[i]);
+	free(env->matrix);
+}
+
 int	main(int argc, char **argv)
 {
 	t_env	env;
@@ -99,6 +109,7 @@ int	main(int argc, char **argv)
 	mlx_mouse_hook(env.win_ptr, &mouse_hook, &env);
 	mlx_hook(env.win_ptr, 33, 0, &fdf_close, &env);
 	mlx_loop(env.mlx_ptr);
+	free_matrix(&env);
 	return (0);
 }
 
