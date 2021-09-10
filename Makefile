@@ -30,7 +30,7 @@ OBJS = $(SRCS:%.c=$O%.o)
 
 CC = gcc
 CFLAGS += -Wall -Wextra -Werror
-LDFLAGS += -Llibft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz 
+LDFLAGS += -Llibft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm
 INC = -I$I -Imlx_linux
 
 RM = /bin/rm

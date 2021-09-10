@@ -54,12 +54,12 @@ int	main(int argc, char **argv)
 	int j;
 	printf("height: [%d]\nwidth: [%d]\n", env.height, env.width);
 	i = 0;
-	while (env.z_matrix[i])
+	while (env.matrix[i])
 	{
 		j = 0;
 		while (j < env.width)
 		{
-			printf("%4d", env.z_matrix[i][j]);
+			printf("%4d", env.z_matrix[i][j]->z);
 			j++;
 		}
 		printf("\n");

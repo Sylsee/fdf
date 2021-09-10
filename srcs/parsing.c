@@ -51,7 +51,7 @@ static int	get_width(char *filename)
 	return (width);
 }
 
-static int	*fill_arr(char *line, int *arr)
+static t_dot	*fill_arr(char *line, t_dot *arr, int y)
 {
 	int		i;
 	char	**nums;
@@ -62,7 +62,9 @@ static int	*fill_arr(char *line, int *arr)
 		print_and_exit("Error");
 	while (nums[i])
 	{
-		arr[i] = ft_atoi(nums[i]);
+		arr[i].x = i;
+		arr[i].y = y;
+		arr[i].z = ft_atoi(nums[i]);
 		free(nums[i]);
 		i++;
 	}
@@ -78,8 +80,8 @@ void	parsing(char *filename, t_env *env)
 
 	env->height = get_height(filename);
 	env->width = get_width(filename);
-	env->z_matrix = malloc(sizeof(int *) * (env->height + 1));
-	if (!(env->z_matrix))
+	env->matrix = malloc(sizeof(t_dot *) * (env->height + 1));
+	if (!(env->matrix))
 		print_and_exit("Malloc error");
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
@@ -87,14 +89,14 @@ void	parsing(char *filename, t_env *env)
 	i = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
-		env->z_matrix[i] = malloc(sizeof(int) * (env->width + 1));
-		if (!(env->z_matrix[i]))
+		env->matrix[i] = malloc(sizeof(t_dot) * (env->width + 1));
+		if (!(env->matrix[i]))
 			print_and_exit("Malloc error");
-		fill_arr(line, env->z_matrix[i]);
+		fill_arr(line, env->matrix[i], i);
 		free(line);
 		i++;
 	}
-	env->z_matrix[i] = NULL;
+	env->matrix[i] = NULL;
 	free(line);
 	close(fd);
 }

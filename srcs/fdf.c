@@ -14,29 +14,53 @@
 
 #define MAX(X, Y) (X > Y) ? X : Y
 
-void	zoom(int x, int y, int x1, int y1, t_env *env)
+void	zoom(float *x, float *y, float *x1, float *y1, t_env *env)
 {
-	x *= env->zoom;
-	x1 *= env->zoom;
-	y *= env->zoom;
-	y1 *= env->zoom;
+	*x *= env->zoom;
+	*x1 *= env->zoom;
+	*y *= env->zoom;
+	*y1 *= env->zoom;
 }
 
-void	bresenham(int x, int y, int x1, int y1, t_env *env)
+void	isometric(float *x, float *y, float z, t_env *env)
+{
+	*x = (*x - *y) * cos(env->angle);
+	*y = (*x + *y) * sin(env->angle) - z;
+}
+
+void	step(float *x_step, float *y_step, float x, float y, float x1, float y1)
 {
 	int	max;
-	int	x_step;
-	int	y_step;
 
-	zoom(x, y, x1, y1, env);
-	x_step = x1 - x;
-	y_step = y1 - y;
-	max = MAX(ABS(x_step), ABS(y_step));
-	x_step /= max;
-	y_step /= max;
-	while (x - x1 > 0 || y - y1 > 0)
+	*x_step = x1 - x;
+	*y_step = y1 - y;
+	max = MAX(ABS(*x_step), ABS(*y_step));
+	*x_step /= max;
+	*y_step /= max;
+}
+
+void	bresenham(float x, float y, float x1, float y1, t_env *env)
+{
+	int	z;
+	int	z1;
+	int	color;
+	float	x_step;
+	float	y_step;
+
+	z = env->matrix[(int)y][(int)x].z;
+	z1 = env->matrix[(int)y1][(int)x1].z;
+	zoom(&x, &y, &x1, &y1, env);
+	color = (z || z1) ? 0xfc0345 : 0xBBFAFF;
+	isometric(&x, &y, z, env);
+	isometric(&x1, &y1, z1, env);
+	x += 150;
+	y += 150;
+	x1 += 150;
+	y1 += 150;
+	step(&x_step, &y_step, x, y, x1, y1);
+	while ((int)(x - x1) || (int)(y - y1))
 	{
-		mlx_pixel_put(env->mlx_ptr, env->win_ptr, x, y, 0xBBFAFF);
+		mlx_pixel_put(env->mlx_ptr, env->win_ptr, x, y, color);
 		x += x_step;
 		y += y_step;
 	}
@@ -44,27 +68,20 @@ void	bresenham(int x, int y, int x1, int y1, t_env *env)
 
 void	fdf(t_env *env)
 {
-/*	int	x;
+	int	x;
 	int	y;
 
-	x = -1;
-	while (++x < env->height)
+	y = -1;
+	while (++y < env->height)
 	{
-		y = -1;
-		while (++y < env->width)
+		x = -1;
+		while (++x < env->width)
 		{
-		//	if (x < env->height - 1)
-		//		bresenham(x, y, x + 1, y, env);
-		//	if (y < env->width - 1)
-		//		bresenham(x, y, x, y + 1, env);
+			if (x < env->width - 1)
+				bresenham(env->matrix[y][x], env->matrix[y][x + 1], env);
+			if (y < env->height - 1)
+				bresenham(env->matrix[y][x], env->matrix[y + 1][x], env);
 		}
-	}*/
-	int x = 49;
-	while (++x < 100)
-	{
-		int y = 49;
-		while (++y < 100)
-			mlx_pixel_put(env->mlx_ptr, env->win_ptr, x, y, 255);
 	}
-	//bresenham(50, 50, 100, 100, env);
 }
+//	printf("x: [%d]\ny: [%d]\n", x, y);

@@ -25,7 +25,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# define ABS(X) (((X >> 31) & 1) ? -X : X)
+# define ABS(X) ((X < 0) ? -X : X)
 
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t count, size_t size);
