@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:25:06 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:25:56 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	setup(t_env *env)
 {
 	env->zoom = 20;
 	env->angle = 0.8;
-	env->x_shift = 150;
+	env->x_shift = 190;
 	env->y_shift = 150;
 	env->z_shift = 0;
 }
