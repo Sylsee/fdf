@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/09 18:21:50 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 04:36:01 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ int	hook(int key, t_env *env)
 	return (0);
 }
 
+static void	setup(t_env *env)
+{
+	env->zoom = 20;
+	env->angle = 0.8;
+	env->x_shift = 150;
+	env->y_shift = 150;
+	env->z_shift = 0;
+}
+
 int	main(int argc, char **argv)
 {
 	t_env	env;
@@ -40,8 +49,7 @@ int	main(int argc, char **argv)
 	if (!(env.win_ptr))
 		print_and_exit("Cannot create the window");
 	parsing(argv[1], &env);
-	env.zoom = 20;
-	env.angle = 0.8;
+	setup(&env);
 	fdf(&env);
 	mlx_key_hook(env.win_ptr, &hook, &env);
 	mlx_hook(env.win_ptr, 33, 0, &fdf_close, &env);

@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 22:14:53 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/09 18:26:19 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 04:29:22 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef struct s_env
 	int		height;
 	t_dot		**matrix;
 
+	int		x_shift;
+	int		y_shift;
+	int		z_shift;
 	int		zoom;
 	float	angle;
 
