@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 21:06:28 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 17:41:20 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 18:19:02 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,25 @@ static void	step(float *x_step, float *y_step, t_dot a, t_dot b)
 	*y_step /= max;
 }
 
+static int	get_color(t_dot a, t_dot b)
+{
+	int	z;
+	int	color;
+
+	if (a.x == b.x)
+		z = ;
+	else
+		z = ;
+	color = ;
+}
+
 static void	bresenham(t_dot a, t_dot b, t_env *env)
 {
 	int		color;
 	float	x_step;
 	float	y_step;
 
+	get_color(a, b);
 	zoom(&a, &b, env);
 	color = (a.z || b.z) ? 0xfc0345 : 0xBBFAFF;
 	if (env->isometric)
