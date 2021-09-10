@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:41:24 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:46:47 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,17 @@ int	fdf_close(t_env *env)
 int	mouse_hook(int button, int x, int y, t_env *env)
 {
 	printf("button: [%d]\nx: [%d]\ny: [%d]\n", button, x, y);
-//	if (key == 1)
-//		rotate_right();
-//	if (key == 3)
-//		rotate_left();
+	if (button == 1)
+		env->angle -= 0.1;
+	if (button == 3)
+		env->angle += 0.1;
 	if (button == 4)
 		env->zoom += 1;
 	if (button == 5 && env->zoom > 1)
 		env->zoom -= 1;
 	printf("zoom: [%d]\n", env->zoom);
-	if (button == 4 || button == 5)
-	{
-		mlx_clear_window(env->mlx_ptr, env->win_ptr);
-		fdf(env);
-	}
+	mlx_clear_window(env->mlx_ptr, env->win_ptr);
+	fdf(env);
 	return (0);
 }
 
