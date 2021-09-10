@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 04:36:01 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 04:50:38 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,22 @@ int	hook(int key, t_env *env)
 	printf("key: [%d]\n", key);
 	if (key == 65307)
 		fdf_close(env);
+/*	if (key == 65361)
+		left(env);
+	if (key == 65364)
+		down(env);
+	if (key == 65363)
+		right(env);
+	if (key == 65362)
+		up(env);
+	if (key == 1)
+		rotate_right();
+	if (key == 3)
+		rotate_left();*/
+	if (key == 4)
+		env->zoom += 1;
+	if (key == 5)
+		env->zoom -= 1;
 	return (0);
 }
 
@@ -52,6 +68,7 @@ int	main(int argc, char **argv)
 	setup(&env);
 	fdf(&env);
 	mlx_key_hook(env.win_ptr, &hook, &env);
+	mlx_mouse_hook(env.win_ptr, &hook, &env);
 	mlx_hook(env.win_ptr, 33, 0, &fdf_close, &env);
 	mlx_loop(env.mlx_ptr);
 	return (0);
