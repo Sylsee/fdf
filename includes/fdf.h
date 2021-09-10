@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 22:14:53 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 06:26:11 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 17:37:43 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,15 @@ typedef struct s_env
 }				t_env;
 
 void	fdf(t_env *env);
+
 void	parsing(char *filename, t_env *env);
+void	setup(t_env *env);
+
+int		key_hook(int key, t_env *env);
+int		mouse_hook(int button, int x, int y, t_env *env);
+
+int		fdf_close(t_env *env);
+void	free_matrix(t_env *env);
 void	print_and_exit(char *s);
 
 #endif
