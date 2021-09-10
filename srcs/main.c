@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:10:19 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:14:23 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 	setup(&env);
 	fdf(&env);
 	mlx_key_hook(env.win_ptr, &key_hook, &env);
-	mlx_mouse_hook(env.win_ptr, &mouse_hook, &env);
+//	mlx_mouse_hook(env.win_ptr, &mouse_hook, &env);
 	mlx_hook(env.win_ptr, 33, 0, &fdf_close, &env);
 	mlx_loop(env.mlx_ptr);
 	return (0);
