@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 21:06:28 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:16:23 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:16:53 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	bresenham(t_dot a, t_dot b, t_env *env)
 	color = (a.z || b.z) ? 0xfc0345 : 0xBBFAFF;
 	isometric(&(a.x), &(a.y), a.z, env);
 	isometric(&(b.x), &(b.y), b.z, env);
-	shift(a, b, env);
+	shift(&a, &b, env);
 	step(&x_step, &y_step, a, b);
 	while ((int)(a.x - b.x) || (int)(a.y - b.y))
 	{
