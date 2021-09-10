@@ -6,13 +6,11 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 21:06:28 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/09 19:47:18 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 03:44:24 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-#define MAX(X, Y) (X > Y) ? X : Y
 
 void	zoom(t_dot *a, t_dot *b, t_env *env)
 {
@@ -34,7 +32,7 @@ void	step(float *x_step, float *y_step, t_dot a, t_dot b)
 
 	*x_step = b.x - a.x;
 	*y_step = b.y - a.y;
-	max = MAX(ABS(*x_step), ABS(*y_step));
+	max = ft_max(ft_abs(*x_step), ft_abs(*y_step));
 	*x_step /= max;
 	*y_step /= max;
 }

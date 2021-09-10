@@ -6,7 +6,7 @@
 /*   By: spoliart <sylvio.poliart@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 20:34:43 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/09 01:20:07 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 03:40:12 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-
-# define ABS(X) ((X < 0) ? -X : X)
 
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t count, size_t size);
@@ -68,6 +66,8 @@ double				ft_atof(char *s);
 char				*ft_itoa(int n);
 int					ft_nbrlen(long nb);
 char				*ft_itox(int nb);
+int					ft_abs(int a);
+int					ft_max(int a, int b);
 
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
