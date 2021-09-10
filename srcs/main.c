@@ -28,7 +28,7 @@ int	mouse_hook(int button, int x, int y, t_env *env)
 //		rotate_left();
 	if (button == 4)
 		env->zoom += 1;
-	if (button == 5 && env->zoom > 5)
+	if (button == 5 && env->zoom > 1)
 		env->zoom -= 1;
 	printf("zoom: [%d]\n", env->zoom);
 	if (button == 4 || button == 5)
