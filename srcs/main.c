@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 04:55:21 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:10:19 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,27 @@ int	fdf_close(t_env *env)
 	exit(0);
 }
 
-int	hook(int key, t_env *env)
+int	mouse_hook(int button, int x, int y, t_env *env)
+{
+	(void)env;
+	printf("button: [%d]\nx: [%d]\ny: [%d]\n", button, x, y);
+//	if (key == 1)
+//		rotate_right();
+//	if (key == 3)
+//		rotate_left();
+	if (button == 4)
+		env->zoom += 1;
+	if (button == 5)
+		env->zoom -= 1;
+	if (button == 4 || button == 5)
+	{
+		mlx_clear_window(env->mlx_ptr, env->win_ptr);
+		fdf(env);
+	}
+	return (0);
+}
+
+int	key_hook(int key, t_env *env)
 {
 	printf("key: [%d]\n", key);
 	if (key == 65307)
@@ -31,20 +51,7 @@ int	hook(int key, t_env *env)
 	if (key == 65363)
 		right(env);
 	if (key == 65362)
-		up(env);
-	if (key == 1)
-		rotate_right();
-	if (key == 3)
-		rotate_left();*/
-	if (key == 4)
-		env->zoom += 1;
-	if (key == 5)
-		env->zoom -= 1;
-	if (key == 4 || key == 5)
-	{
-		mlx_clear_window(env->mlx_ptr, env->win_ptr);
-		fdf(env);
-	}
+		up(env);*/
 	return (0);
 }
 
@@ -72,8 +79,8 @@ int	main(int argc, char **argv)
 	parsing(argv[1], &env);
 	setup(&env);
 	fdf(&env);
-	mlx_key_hook(env.win_ptr, &hook, &env);
-	mlx_mouse_hook(env.win_ptr, &hook, &env);
+	mlx_key_hook(env.win_ptr, &key_hook, &env);
+	mlx_mouse_hook(env.win_ptr, &mouse_hook, &env);
 	mlx_hook(env.win_ptr, 33, 0, &fdf_close, &env);
 	mlx_loop(env.mlx_ptr);
 	return (0);

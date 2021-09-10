@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 21:06:28 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 04:57:28 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:01:33 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,8 @@ void	fdf(t_env *env)
 		x = -1;
 		while (++x < env->width)
 		{
-			printf("matrix[y][x]: [%d]\n", env->matrix[y][x].x);
 			if (x < env->width - 1)
 				bresenham(env->matrix[y][x], env->matrix[y][x + 1], env);
-			printf("matrix[y][x]: [%d]\n", env->matrix[y][x].x);
 			if (y < env->height - 1)
 				bresenham(env->matrix[y][x], env->matrix[y + 1][x], env);
 		}
