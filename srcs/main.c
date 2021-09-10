@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:50:24 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:54:43 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@ int	mouse_hook(int button, int x, int y, t_env *env)
 	return (0);
 }
 
+static void	setup(t_env *env)
+{
+	env->isometric = 1;
+	env->zoom = 20;
+	env->angle = 0.8;
+	env->x_shift = 190;
+	env->y_shift = 150;
+	env->z_shift = 0;
+}
+
 void	need_reset(int key, t_env *env)
 {
 	if (key == 65363)
@@ -54,24 +64,9 @@ void	need_reset(int key, t_env *env)
 			env->x_shift += 120;
 		env->isometric = !(env->isometric);
 	}
+	if (key == 100)
+		setup(env);
 	mlx_clear_window(env->mlx_ptr, env->win_ptr);
-	fdf(env);
-}
-
-static void	setup(t_env *env)
-{
-	env->isometric = 1;
-	env->zoom = 20;
-	env->angle = 0.8;
-	env->x_shift = 190;
-	env->y_shift = 150;
-	env->z_shift = 0;
-}
-
-static void	reset_default(t_env *env)
-{
-	mlx_clear_window(env->mlx_ptr, env->win_ptr);
-	setup(env);
 	fdf(env);
 }
 
@@ -81,10 +76,8 @@ int	key_hook(int key, t_env *env)
 	if (key == 65307)
 		fdf_close(env);
 	if (key == 65361 || key == 65363 || key == 65364 || key == 65362 ||
-		key == 32)
+		key == 32 || key == 100)
 		need_reset(key, env);
-	if (key == 100)
-		reset_default(env);
 	return (0);
 }
 
