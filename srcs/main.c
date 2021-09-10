@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:34:19 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:39:23 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	mouse_hook(int button, int x, int y, t_env *env)
 		env->zoom += 1;
 	if (button == 5)
 		env->zoom -= 1;
+	printf("zoom: [%d]\n", env->zoom);
 	if (button == 4 || button == 5)
 	{
 		mlx_clear_window(env->mlx_ptr, env->win_ptr);
