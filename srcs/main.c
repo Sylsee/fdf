@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 05:20:29 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 05:23:08 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,8 @@ int	mouse_hook(int button, int x, int y, t_env *env)
 	return (0);
 }
 
-int	key_hook(int key, t_env *env)
+void	move(int key, t_env *env)
 {
-	printf("key: [%d]\n", key);
-	if (key == 65307)
-		fdf_close(env);
 	if (key == 65361)
 		env->x_shift += 20;
 	if (key == 65363)
@@ -51,6 +48,17 @@ int	key_hook(int key, t_env *env)
 		env->y_shift += 20;
 	if (key == 65362)
 		env->y_shift -= 20;
+	mlx_clear_window(env->mlx_ptr, env->win_ptr);
+	fdf(env);
+}
+
+int	key_hook(int key, t_env *env)
+{
+	printf("key: [%d]\n", key);
+	if (key == 65307)
+		fdf_close(env);
+	if (key == 65361 || key == 65363 || key == 65364 || key == 65362)
+		move(key, env);
 	return (0);
 }
 
