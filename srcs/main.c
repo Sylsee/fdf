@@ -6,18 +6,11 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 06:13:05 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 06:16:26 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int	fdf_close(t_env *env)
-{
-	mlx_clear_window(env->mlx_ptr, env->win_ptr);
-	mlx_destroy_window(env->mlx_ptr, env->win_ptr);
-	exit(0);
-}
 
 int	mouse_hook(int button, int x, int y, t_env *env)
 {
@@ -69,6 +62,24 @@ void	need_reset(int key, t_env *env)
 	fdf(env);
 }
 
+void	free_matrix(t_env *env)
+{
+	int	i;
+
+	i = -1;
+	while (++i < env->height)
+		free(env->matrix[i]);
+	free(env->matrix);
+}
+
+int	fdf_close(t_env *env)
+{
+	mlx_clear_window(env->mlx_ptr, env->win_ptr);
+	mlx_destroy_window(env->mlx_ptr, env->win_ptr);
+	free_matrix(env);
+	exit(0);
+}
+
 int	key_hook(int key, t_env *env)
 {
 	printf("key: [%d]\n", key);
@@ -78,16 +89,6 @@ int	key_hook(int key, t_env *env)
 		key == 32 || key == 100)
 		need_reset(key, env);
 	return (0);
-}
-
-void	free_matrix(t_env *env)
-{
-	int	i;
-
-	i = -1;
-	while (++i < env->height)
-		free(env->matrix[i]);
-	free(env->matrix);
 }
 
 int	main(int argc, char **argv)
