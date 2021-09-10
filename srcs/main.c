@@ -58,6 +58,23 @@ void	need_reset(int key, t_env *env)
 	fdf(env);
 }
 
+static void	setup(t_env *env)
+{
+	env->isometric = 1;
+	env->zoom = 20;
+	env->angle = 0.8;
+	env->x_shift = 190;
+	env->y_shift = 150;
+	env->z_shift = 0;
+}
+
+static void	reset_default(t_env *env)
+{
+	mlx_clear_window(env->mlx_ptr, env->win_ptr);
+	setup(env);
+	fdf(env);
+}
+
 int	key_hook(int key, t_env *env)
 {
 	printf("key: [%d]\n", key);
@@ -69,22 +86,6 @@ int	key_hook(int key, t_env *env)
 	if (key == 100)
 		reset_default(env);
 	return (0);
-}
-
-static void	reset_default(t_env *env)
-{
-	setup(env);
-	fdf(env);
-}
-
-static void	setup(t_env *env)
-{
-	env->isometric = 1;
-	env->zoom = 20;
-	env->angle = 0.8;
-	env->x_shift = 190;
-	env->y_shift = 150;
-	env->z_shift = 0;
 }
 
 int	main(int argc, char **argv)
