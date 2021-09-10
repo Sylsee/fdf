@@ -14,12 +14,12 @@
 
 #define MAX(X, Y) (X > Y) ? X : Y
 
-void	zoom(float *x, float *y, float *x1, float *y1, t_env *env)
+void	zoom(t_dot *a, t_dot *b, t_env *env)
 {
-	*x *= env->zoom;
-	*x1 *= env->zoom;
-	*y *= env->zoom;
-	*y1 *= env->zoom;
+	a->x *= env->zoom;
+	b->x *= env->zoom;
+	a->y *= env->zoom;
+	b->y *= env->zoom;
 }
 
 void	isometric(float *x, float *y, float z, t_env *env)
@@ -28,41 +28,37 @@ void	isometric(float *x, float *y, float z, t_env *env)
 	*y = (*x + *y) * sin(env->angle) - z;
 }
 
-void	step(float *x_step, float *y_step, float x, float y, float x1, float y1)
+void	step(float *x_step, float *y_step, t_dot a, t_dot b)
 {
 	int	max;
 
-	*x_step = x1 - x;
-	*y_step = y1 - y;
+	*x_step = b.x - a.x;
+	*y_step = b.y - a.y;
 	max = MAX(ABS(*x_step), ABS(*y_step));
 	*x_step /= max;
 	*y_step /= max;
 }
 
-void	bresenham(float x, float y, float x1, float y1, t_env *env)
+void	bresenham(t_dot a, t_dot b, t_env *env)
 {
-	int	z;
-	int	z1;
 	int	color;
 	float	x_step;
 	float	y_step;
 
-	z = env->matrix[(int)y][(int)x].z;
-	z1 = env->matrix[(int)y1][(int)x1].z;
-	zoom(&x, &y, &x1, &y1, env);
-	color = (z || z1) ? 0xfc0345 : 0xBBFAFF;
-	isometric(&x, &y, z, env);
-	isometric(&x1, &y1, z1, env);
-	x += 150;
-	y += 150;
-	x1 += 150;
-	y1 += 150;
-	step(&x_step, &y_step, x, y, x1, y1);
-	while ((int)(x - x1) || (int)(y - y1))
+	zoom(&a, &b, env);
+	color = (a.z || b.z) ? 0xfc0345 : 0xBBFAFF;
+	isometric(&(a.x), &(a.y), a.z, env);
+	isometric(&(b.x), &(b.y), b.z, env);
+	a.x += 150;
+	a.y += 150;
+	b.x += 150;
+	b.y += 150;
+	step(&x_step, &y_step, a, b);
+	while ((int)(a.x - b.x) || (int)(a.y - b.y))
 	{
-		mlx_pixel_put(env->mlx_ptr, env->win_ptr, x, y, color);
-		x += x_step;
-		y += y_step;
+		mlx_pixel_put(env->mlx_ptr, env->win_ptr, a.x, a.y, color);
+		a.x += x_step;
+		a.y += y_step;
 	}
 }
 
