@@ -6,13 +6,13 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 21:06:28 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 18:19:02 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/10 23:48:56 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	step(float *x_step, float *y_step, t_dot a, t_dot b)
+static void	get_step(float *x_step, float *y_step, t_dot a, t_dot b)
 {
 	int	max;
 
@@ -23,39 +23,46 @@ static void	step(float *x_step, float *y_step, t_dot a, t_dot b)
 	*y_step /= max;
 }
 
-static int	get_color(t_dot a, t_dot b)
+static int	get_color(t_dot a, t_dot b, t_dot c)
 {
-	int	z;
+	float	z;
 	int	color;
 
-	if (a.x == b.x)
-		z = ;
+	if (a.y == c.y)
+		z = ((b.x - a.x) / (c.x - a.x)) * (c.z - a.z) + a.z;
 	else
-		z = ;
-	color = ;
+		z = ((b.y - a.y) / (c.y - a.y)) * (c.z - a.z) + a.z;
+	if (z > 20)
+		z = 20;
+	else if (z < -20)
+		z = -20;
+	if (z <= 0)
+		color = 0xFFFFFF - z * 3000;
+	else
+		color = 0xFFFFFF - z * 3000;
+	return (color);
 }
 
-static void	bresenham(t_dot a, t_dot b, t_env *env)
+static void	bresenham(t_dot b, t_dot c, t_env *env)
 {
-	int		color;
-	float	x_step;
-	float	y_step;
+	t_dot	a;
+	t_dot	step;
 
-	get_color(a, b);
-	zoom(&a, &b, env);
-	color = (a.z || b.z) ? 0xfc0345 : 0xBBFAFF;
+	zoom(&b, &c, env);
 	if (env->isometric)
 	{
-		isometric(&(a.x), &(a.y), a.z, env);
 		isometric(&(b.x), &(b.y), b.z, env);
+		isometric(&(c.x), &(c.y), c.z, env);
 	}
-	shift(&a, &b, env);
-	step(&x_step, &y_step, a, b);
-	while ((int)(a.x - b.x) || (int)(a.y - b.y))
+	shift(&b, &c, env);
+	a = b;
+	get_step(&(step.x), &(step.y), b, c);
+	while ((int)(b.x - c.x) || (int)(b.y - c.y))
 	{
-		mlx_pixel_put(env->mlx_ptr, env->win_ptr, a.x, a.y, color);
-		a.x += x_step;
-		a.y += y_step;
+		mlx_pixel_put(env->mlx_ptr, env->win_ptr, b.x, b.y,
+					get_color(a, b, c));
+		b.x += step.x;
+		b.y += step.y;
 	}
 }
 
