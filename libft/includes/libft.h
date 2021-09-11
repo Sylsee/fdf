@@ -6,7 +6,7 @@
 /*   By: spoliart <sylvio.poliart@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 20:34:43 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 03:40:12 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/11 22:40:22 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int					ft_nbrlen(long nb);
 char				*ft_itox(int nb);
 int					ft_abs(int a);
 int					ft_max(int a, int b);
+int					ft_round(double num);
 
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);

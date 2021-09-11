@@ -6,7 +6,7 @@
 #    By: spoliart <sylvio.poliart@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/13 19:04:24 by spoliart          #+#    #+#              #
-#    Updated: 2021/09/10 03:39:30 by spoliart         ###   ########.fr        #
+#    Updated: 2021/09/11 22:39:50 by spoliart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,6 +99,7 @@ SRCS			=	char/ft_isalnum.c \
 					nbr/ft_itox.c \
 					nbr/ft_abs.c \
 					nbr/ft_max.c \
+					nbr/ft_round.c \
 					mem/ft_bzero.c \
 					mem/ft_calloc.c \
 					mem/ft_memalloc.c \

@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 21:06:28 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/11 09:29:59 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/11 23:51:22 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	bresenham(t_dot b, t_dot c, t_env *env)
 	}
 	shift(&b, &c, env);
 	a = b;
+	(void)a;
 	get_step(&(step.x), &(step.y), b, c);
 	while ((int)(b.x - c.x) || (int)(b.y - c.y))
 	{

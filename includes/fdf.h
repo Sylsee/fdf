@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 22:14:53 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/11 09:31:08 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/12 00:02:46 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/includes/libft.h"
 # include "../mlx_linux/mlx.h"
+
 
 typedef struct s_dot
 {
@@ -25,20 +26,25 @@ typedef struct s_dot
 
 typedef struct s_env
 {
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_dot	**matrix;
 	int		width;
 	int		height;
-	t_dot	**matrix;
 
+	int		z_min;
+	int		z_max;
+	int		z_len;
 	int		x_shift;
 	int		y_shift;
 	int		zoom;
 	int		z_zoom;
-	double	angle;
 	int		isometric;
 	int		colorise;
+	int		start_color;
+	int		end_color;
+	double	angle;
 
-	void	*mlx_ptr;
-	void	*win_ptr;
 }				t_env;
 
 void	fdf(t_env *env);
