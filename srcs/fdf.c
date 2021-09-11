@@ -6,13 +6,13 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 21:06:28 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 23:48:56 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/11 05:54:33 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	get_step(float *x_step, float *y_step, t_dot a, t_dot b)
+static void	get_step(double *x_step, double *y_step, t_dot a, t_dot b)
 {
 	int	max;
 
@@ -25,7 +25,7 @@ static void	get_step(float *x_step, float *y_step, t_dot a, t_dot b)
 
 static int	get_color(t_dot a, t_dot b, t_dot c)
 {
-	float	z;
+	double	z;
 	int	color;
 
 	if (a.y == c.y)

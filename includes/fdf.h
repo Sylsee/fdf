@@ -18,9 +18,9 @@
 
 typedef struct s_dot
 {
-	float	x;
-	float	y;
-	float	z;
+	double	x;
+	double	y;
+	double	z;
 }				t_dot;
 
 typedef struct s_env
@@ -33,7 +33,7 @@ typedef struct s_env
 	int		y_shift;
 	int		z_shift;
 	int		zoom;
-	float	angle;
+	double	angle;
 	int		isometric;
 
 	void	*mlx_ptr;
@@ -45,7 +45,7 @@ void	fdf(t_env *env);
 void	parsing(char *filename, t_env *env);
 void	setup(t_env *env);
 
-void	isometric(float *x, float *y, float z, t_env *env);
+void	isometric(double *x, double *y, double z, t_env *env);
 void	shift(t_dot *a, t_dot *b, t_env *env);
 void	zoom(t_dot *a, t_dot *b, t_env *env);
 

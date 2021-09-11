@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	isometric(float *x, float *y, float z, t_env *env)
+void	isometric(double *x, double *y, double z, t_env *env)
 {
 	*x = (*x - *y) * cos(env->angle);
 	*y = (*x + *y) * sin(env->angle) - z;

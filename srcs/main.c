@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 17:50:05 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/11 05:23:17 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 	t_env	env;
 
 	if (argc != 2 || (argv[1] && !(ft_str_end(argv[1], ".fdf"))))
-		print_and_exit("Usage: ./fdf file.fdf");
+		print_and_exit("Usage: ./fdf map.fdf");
 	env.mlx_ptr = mlx_init();
 	if (!(env.mlx_ptr))
 		print_and_exit("Cannot init the minilibx");
