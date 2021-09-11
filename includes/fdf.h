@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 22:14:53 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/12 00:02:46 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/12 00:33:06 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../libft/includes/libft.h"
 # include "../mlx_linux/mlx.h"
-
 
 typedef struct s_dot
 {
