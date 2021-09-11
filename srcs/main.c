@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/12 00:30:18 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/12 01:10:44 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	fdf_close(t_env *env)
 	mlx_destroy_window(env->mlx_ptr, env->win_ptr);
 	mlx_destroy_display(env->mlx_ptr);
 	free_matrix(env);
+	free(env);
 	exit(0);
 }
 
@@ -44,9 +45,18 @@ void	setup(t_env *env)
 	env->angle = 0.8;
 	env->x_shift = 190;
 	env->y_shift = 150;
-	env->start_color = 0xF6F0EA;
-	env->end_color = 0xA55C1B;
+	env->start_color = 0xFFD700;
+	env->end_color = 0xDD1818;
 }
+
+/*		blue to red
+	env->start_color = 0x12C2E9;
+	env->end_color = 0xF64F59;
+
+		yellow to red
+	env->start_color = 0xFFD700;
+	env->end_color = 0xDD1818;
+*/
 
 void	matrix_min_max(t_env *env)
 {
