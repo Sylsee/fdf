@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/12 01:10:44 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/12 01:13:02 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	setup(t_env *env)
 	env->angle = 0.8;
 	env->x_shift = 190;
 	env->y_shift = 150;
-	env->start_color = 0xFFD700;
+	env->start_color = 0x0F9B0F;
 	env->end_color = 0xDD1818;
 }
 
@@ -55,6 +55,10 @@ void	setup(t_env *env)
 
 		yellow to red
 	env->start_color = 0xFFD700;
+	env->end_color = 0xDD1818;
+
+		green to red
+	env->start_color = 0x0F9B0F;
 	env->end_color = 0xDD1818;
 */
 
