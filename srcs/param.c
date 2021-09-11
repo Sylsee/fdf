@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 17:41:39 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/10 23:46:54 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/11 09:30:47 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	shift(t_dot *a, t_dot *b, t_env *env)
 	b->x += env->x_shift;
 	a->y += env->y_shift;
 	b->y += env->y_shift;
-	a->z += env->z_shift;
-	b->z += env->z_shift;
 }
 
 void	zoom(t_dot *a, t_dot *b, t_env *env)
@@ -34,4 +32,6 @@ void	zoom(t_dot *a, t_dot *b, t_env *env)
 	b->x *= env->zoom;
 	a->y *= env->zoom;
 	b->y *= env->zoom;
+	a->z *= env->z_zoom;
+	b->z *= env->z_zoom;
 }

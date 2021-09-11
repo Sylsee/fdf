@@ -6,7 +6,7 @@
 #    By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/07 20:57:42 by spoliart          #+#    #+#              #
-#    Updated: 2021/09/10 17:43:14 by spoliart         ###   ########.fr        #
+#    Updated: 2021/09/11 08:30:01 by spoliart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,13 @@ SRCS =	main.c \
 		fdf.c \
 		parsing.c \
 		param.c \
+		color.c \
 		hook.c \
 		error.c
 OBJS = $(SRCS:%.c=$O%.o)
 
 CC = gcc
-CFLAGS += -Wall -Wextra -Werror
+CFLAGS += -O3 -Wall -Wextra -Werror
 LDFLAGS += -Llibft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm
 INC = -I$I -Imlx_linux
 

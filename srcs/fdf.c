@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 21:06:28 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/11 05:54:33 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/11 09:29:59 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,13 @@ static void	get_step(double *x_step, double *y_step, t_dot a, t_dot b)
 	*y_step /= max;
 }
 
-static int	get_color(t_dot a, t_dot b, t_dot c)
-{
-	double	z;
-	int	color;
-
-	if (a.y == c.y)
-		z = ((b.x - a.x) / (c.x - a.x)) * (c.z - a.z) + a.z;
-	else
-		z = ((b.y - a.y) / (c.y - a.y)) * (c.z - a.z) + a.z;
-	if (z > 20)
-		z = 20;
-	else if (z < -20)
-		z = -20;
-	if (z <= 0)
-		color = 0xFFFFFF - z * 3000;
-	else
-		color = 0xFFFFFF - z * 3000;
-	return (color);
-}
-
 static void	bresenham(t_dot b, t_dot c, t_env *env)
 {
+	int		color;
 	t_dot	a;
 	t_dot	step;
 
+	color = 0xFFFFFF;
 	zoom(&b, &c, env);
 	if (env->isometric)
 	{
@@ -59,8 +41,9 @@ static void	bresenham(t_dot b, t_dot c, t_env *env)
 	get_step(&(step.x), &(step.y), b, c);
 	while ((int)(b.x - c.x) || (int)(b.y - c.y))
 	{
-		mlx_pixel_put(env->mlx_ptr, env->win_ptr, b.x, b.y,
-					get_color(a, b, c));
+		if (env->colorise)
+			color = get_color(a, b, c, env);
+		mlx_pixel_put(env->mlx_ptr, env->win_ptr, b.x, b.y, color);
 		b.x += step.x;
 		b.y += step.y;
 	}
@@ -68,6 +51,7 @@ static void	bresenham(t_dot b, t_dot c, t_env *env)
 
 void	fdf(t_env *env)
 {
+	printf("zoom: [%d]\nwidth: [%d]\ncolorise: [%d]\n", env->zoom, env->width, env->colorise);
 	int	x;
 	int	y;
 
