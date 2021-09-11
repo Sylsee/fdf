@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_round.c                                         :+:      :+:    :+:   */
+/*   ft_color.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/11 22:37:32 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/12 00:24:34 by spoliart         ###   ########.fr       */
+/*   Created: 2021/09/12 00:20:06 by spoliart          #+#    #+#             */
+/*   Updated: 2021/09/12 00:26:50 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_round(double num)
+int	ft_r(int c)
 {
-	int	rounded;
+	return (c >> 16);
+}
 
-	rounded = (int)num;
-	if (num - rounded >= .5)
-		rounded++;
-	return (rounded);
+int	ft_g(int c)
+{
+	return ((c >> 8) & 0xFF);
+}
+
+int	ft_b(int c)
+{
+	return (c & 0xFF);
+}
+
+int	ft_rgb(int r, int g, int b)
+{
+	return ((r << 16) + (g << 8) + b);
 }

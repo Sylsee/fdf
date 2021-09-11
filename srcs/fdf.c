@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 21:06:28 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/11 23:51:22 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/12 00:17:07 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ static void	bresenham(t_dot b, t_dot c, t_env *env)
 
 void	fdf(t_env *env)
 {
-	printf("zoom: [%d]\nwidth: [%d]\ncolorise: [%d]\n", env->zoom, env->width, env->colorise);
 	int	x;
 	int	y;
 

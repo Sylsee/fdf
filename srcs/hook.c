@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 17:28:44 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/11 09:32:44 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/12 00:28:40 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,12 @@ static void	need_reset(int key, t_env *env)
 	}
 	if (key == 100)
 		setup(env);
-	mlx_clear_window(env->mlx_ptr, env->win_ptr);
-	fdf(env);
 }
 
 int	mouse_hook(int button, int x, int y, t_env *env)
 {
-	printf("button: [%d]\nx: [%d]\ny: [%d]\n", button, x, y);
+	(void)x;
+	(void)y;
 	if (button == 1)
 		env->angle -= 0.1;
 	if (button == 3)
@@ -68,11 +67,14 @@ int	mouse_hook(int button, int x, int y, t_env *env)
 
 int	key_hook(int key, t_env *env)
 {
-	printf("key: [%d]\n", key);
 	if (key == 65307)
 		fdf_close(env);
 	if (key == 65361 || key == 65363 || key == 65364 || key == 65362
 		|| key == 32 || key == 100 || key == 99 || key == 'n' || key == 'm')
+	{
+		mlx_clear_window(env->mlx_ptr, env->win_ptr);
 		need_reset(key, env);
+		fdf(env);
+	}
 	return (0);
 }

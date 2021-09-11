@@ -6,7 +6,7 @@
 #    By: spoliart <sylvio.poliart@gmail.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/13 19:04:24 by spoliart          #+#    #+#              #
-#    Updated: 2021/09/11 22:39:50 by spoliart         ###   ########.fr        #
+#    Updated: 2021/09/12 00:25:17 by spoliart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SUB_DIRS		=	. \
 					mem \
 					lst \
 					nbr \
+					mlx \
 					utils
 
 SUB_DIR_OBJS	=	$(SUB_DIRS:%=$(DIR_OBJS)%)
@@ -119,7 +120,8 @@ SRCS			=	char/ft_isalnum.c \
 					lst/ft_lstnew.c \
 					lst/ft_lstsize.c \
 					utils/get_next_line.c \
-					utils/get_next_line_utils.c
+					utils/get_next_line_utils.c \
+					mlx/ft_color.c
 
 ## COMPILED ##
 

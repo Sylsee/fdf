@@ -6,7 +6,7 @@
 /*   By: spoliart <sylvio.poliart@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 20:34:43 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/11 22:40:22 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/12 00:26:13 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,10 @@ int					ft_lstsize(t_list *lst);
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+int					ft_r(int c);
+int					ft_g(int c);
+int					ft_b(int c);
+int					ft_rgb(int r, int g, int b);
 
 #endif

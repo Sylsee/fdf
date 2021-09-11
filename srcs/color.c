@@ -5,17 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/11 06:34:59 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/12 00:15:47 by spoliart         ###   ########.fr       */
+/*   Created: 2021/09/12 00:30:47 by spoliart          #+#    #+#             */
+/*   Updated: 2021/09/12 00:31:21 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-#define R(a) (a) >> 16
-#define G(a) ((a) >> 8) & 0xFF
-#define B(a) (a) & 0xFF
-#define RGB(a, b, c) ((a) << 16) + ((b) << 8) + (c)
 
 static double	get_z(t_dot a, t_dot b, t_dot c)
 {
@@ -39,15 +34,15 @@ int	get_color(t_dot a, t_dot b, t_dot c, t_env *env)
 		return (0);
 	else if (b.z == 0)
 		return (env->start_color);
-	increment[0] = (double)((R(env->end_color)) - (R(env->start_color)))
-					/ (env->z_len * env->z_zoom);
-	increment[1] = (double)((G(env->end_color)) - (G(env->start_color)))
-					/ (env->z_len * env->z_zoom);
-	increment[2] = (double)((B(env->end_color)) - (B(env->start_color)))
-					/ (env->z_len * env->z_zoom);
-	new[0] = (R(env->start_color)) + ft_round(b.z * increment[0]);
-	new[1] = (G(env->start_color)) + ft_round(b.z * increment[1]);
-	new[2] = (B(env->start_color)) + ft_round(b.z * increment[2]);
-	color = RGB(new[0], new[1], new[2]);
+	increment[0] = (double)((ft_r(env->end_color)) - (ft_r(env->start_color)))
+		/ (env->z_len * env->z_zoom);
+	increment[1] = (double)((ft_g(env->end_color)) - (ft_g(env->start_color)))
+		/ (env->z_len * env->z_zoom);
+	increment[2] = (double)((ft_b(env->end_color)) - (ft_b(env->start_color)))
+		/ (env->z_len * env->z_zoom);
+	new[0] = (ft_r(env->start_color)) + ft_round(b.z * increment[0]);
+	new[1] = (ft_g(env->start_color)) + ft_round(b.z * increment[1]);
+	new[2] = (ft_b(env->start_color)) + ft_round(b.z * increment[2]);
+	color = ft_rgb(new[0], new[1], new[2]);
 	return (color);
 }
