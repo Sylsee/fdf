@@ -6,49 +6,39 @@
 /*   By: spoliart <spoliart@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 03:12:16 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/08 03:13:39 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/13 00:57:35 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	get_height(char *filename)
+static void	get_width_height(char *filename, t_env *env)
 {
 	int		fd;
 	int		height;
+	int		width[2];
 	char	*line;
 
 	height = 0;
+	width[0] = 0;
+	width[1] = -1;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		print_and_exit("Error when oppening file.fdf");
-	while (get_next_line(fd, &line) == 1)
+		print_and_exit("Cannot open .fdf file");
+	while (get_next_line(fd, &line) == 1 && ++height)
 	{
-		height++;
+		width[0] = ft_wdcounter(line, ' ');
+		if (width[1] != width[0] && width[1] != -1)
+			print_and_exit("Parsing error");
+		width[1] = width[0];
 		free(line);
 	}
 	free(line);
 	close(fd);
-	return (height);
-}
-
-static int	get_width(char *filename)
-{
-	int		fd;
-	int		width;
-	char	*line;
-
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		print_and_exit("Error when oppening file.fdf");
-	get_next_line(fd, &line);
-	width = ft_wdcounter(line, ' ');
-	free(line);
-	while (get_next_line(fd, &line) == 1)
-		free(line);
-	free(line);
-	close(fd);
-	return (width);
+	if (height == 0)
+		print_and_exit("Parsing error");
+	env->height = height;
+	env->width = width[0];
 }
 
 static t_dot	*fill_arr(char *line, t_dot *arr, int y)
@@ -78,14 +68,13 @@ void	parsing(char *filename, t_env *env)
 	int		fd;
 	char	*line;
 
-	env->height = get_height(filename);
-	env->width = get_width(filename);
+	get_width_height(filename, env);
 	env->matrix = malloc(sizeof(t_dot *) * (env->height + 1));
 	if (!(env->matrix))
 		print_and_exit("Malloc error");
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		print_and_exit("Error");
+		print_and_exit("Cannot open .fdf file");
 	i = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
