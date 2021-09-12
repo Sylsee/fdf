@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 22:14:53 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/12 00:33:06 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/13 01:03:54 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ int		mouse_hook(int button, int x, int y, t_env *env);
 
 int		fdf_close(t_env *env);
 void	free_matrix(t_env *env);
-void	print_and_exit(char *s);
+void	print_and_exit(char *s, t_env *env);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 21:56:57 by spoliart          #+#    #+#             */
-/*   Updated: 2021/09/12 01:13:02 by spoliart         ###   ########.fr       */
+/*   Updated: 2021/09/13 01:22:28 by spoliart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	free_matrix(t_env *env)
 	int	i;
 
 	i = -1;
-	while (++i < env->height)
-		free(env->matrix[i]);
-	free(env->matrix);
+	if (env->matrix)
+	{
+		while (++i < env->height)
+			free(env->matrix[i]);
+		free(env->matrix);
+	}
 }
 
 int	fdf_close(t_env *env)
@@ -90,15 +93,15 @@ int	main(int argc, char **argv)
 
 	env = malloc(sizeof(t_env));
 	if (!env)
-		print_and_exit("Malloc error");
+		print_and_exit("Malloc error", NULL);
 	if (argc != 2 || (argv[1] && !(ft_str_end(argv[1], ".fdf"))))
-		print_and_exit("Usage: ./fdf map.fdf");
+		print_and_exit("Usage: ./fdf map.fdf", env);
 	env->mlx_ptr = mlx_init();
 	if (!(env->mlx_ptr))
-		print_and_exit("Cannot init the minilibx");
+		print_and_exit("Cannot init the minilibx", env);
 	env->win_ptr = mlx_new_window(env->mlx_ptr, 500, 500, "FDF");
 	if (!(env->win_ptr))
-		print_and_exit("Cannot create the window");
+		print_and_exit("Cannot create the window", env);
 	parsing(argv[1], env);
 	setup(env);
 	matrix_min_max(env);
