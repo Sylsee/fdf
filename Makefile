@@ -6,7 +6,7 @@
 #    By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/07 20:57:42 by spoliart          #+#    #+#              #
-#    Updated: 2021/09/11 23:28:06 by spoliart         ###   ########.fr        #
+#    Updated: 2021/09/13 02:38:27 by spoliart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS =	main.c \
 		color.c \
 		hook.c \
 		error.c
+
 OBJS = $(SRCS:%.c=$O%.o)
 
 CC = gcc
