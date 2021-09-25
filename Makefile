@@ -6,7 +6,7 @@
 #    By: spoliart <spoliart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/07 20:57:42 by spoliart          #+#    #+#              #
-#    Updated: 2021/09/13 02:38:27 by spoliart         ###   ########.fr        #
+#    Updated: 2021/09/25 03:37:10 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,8 @@ all:	$(FDF)
 
 $(FDF):	$(OBJS)
 	@printf "\033[2K\r$(_GREEN) All $@ files compiled into '$O'. $(_END)✅\n"
-	@make -C libft/ all
-	@make -C mlx_linux/ all
+	@make -s -C libft/ all
+	@make -s -C mlx_linux/ all
 	@$(CC) $(CFLAGS) $(INC) $^ -o $@ $(LDFLAGS)
 	@printf "$(_GREEN) Binary '$(FDF)' created. $(_END)✅\n"
 
@@ -58,13 +58,13 @@ $O%.o: $S%.c
 	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
-	@make -C libft/ clean
-	@make -C mlx_linux/ clean
+	@make -s -C libft/ clean
+	@make -s -C mlx_linux/ clean
 	@$(RM) -rf $O
 	@printf "$(_RED) '$O' has been deleted. $(_END)🗑️\n"
 
 fclean: clean
-	@make -C libft/ fclean
+	@make -s -C libft/ fclean
 	@$(RM) -f $(FDF)
 	@printf "$(_RED) '$(FDF)' has been deleted. $(_END)🗑️\n"
 
